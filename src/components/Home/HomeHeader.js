@@ -52,16 +52,19 @@ const HomeHeader = () => {
       >
   Avoimet tarjouskilpailut
       </Button>
-      <Button sx={{ backgroundColor: 'blue', color: 'white',
-        transition: 'transform 0.3s',
-        marginTop: '1rem',
-        marginLeft: '1rem',
-        marginBottom: '1rem',
-        borderRadius: '1rem',
-        '&:hover': {
-          transform: 'scale(1.05)',
-          backgroundImage: 'linear-gradient(to bottom, #003eff, #006eff)' }
-      }}>
+      <Button
+        component={Link}
+        to="/lisaailmoitus"
+        sx={{ backgroundColor: 'blue', color: 'white',
+          transition: 'transform 0.3s',
+          marginTop: '1rem',
+          marginLeft: '1rem',
+          marginBottom: '1rem',
+          borderRadius: '1rem',
+          '&:hover': {
+            transform: 'scale(1.05)',
+            backgroundImage: 'linear-gradient(to bottom, #003eff, #006eff)' }
+        }}>
             Aloita tarjouskilpailu
       </Button>
     </Box>

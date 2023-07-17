@@ -34,19 +34,12 @@ const LoginForm = ({ login, registerFormRef, addUser }) => {
     }}>
       <Box>
         <Typography sx={{
-          fontSize: '2.5rem',
-          textAlign: 'center',
-          '@media (max-width: 442px)': {
-            fontSize: '1.5rem',
-          },
-        }}>Want to enhance your skills?</Typography>
-        <Typography sx={{
           fontSize: '2rem',
           textAlign: 'center',
           '@media (max-width: 442px)': {
             fontSize: '1.5rem',
           },
-        }}>Log in to Micro Platform!</Typography>
+        }}>Kirjaudu Nettisivutoriin</Typography>
       </Box>
       <Box component="form" onSubmit={handleSubmit}
         sx={{
@@ -58,19 +51,19 @@ const LoginForm = ({ login, registerFormRef, addUser }) => {
           maxWidth: '30rem',
         }}
       >
-        <Typography>Username</Typography>
+        <Typography>Käyttäjätunnus</Typography>
         <TextField
           id="login-username"
-          label="Username"
+          label="Käyttäjätunnus"
           value={username}
           className="username-input"
           onChange={({ target }) => setUsername(target.value)}
           sx={{ marginBottom: '1rem' }}
         />
-        <Typography>Password</Typography>
+        <Typography>Salasana</Typography>
         <TextField
           id="login-password"
-          label="Password"
+          label="Salasana"
           type="password"
           value={password}
           className='password-input'
@@ -93,7 +86,7 @@ const LoginForm = ({ login, registerFormRef, addUser }) => {
               backgroundImage: 'linear-gradient(to bottom, #003eff, #006eff)' }
           }}
         >
-          Login
+          Kirjaudu
         </Button>
       </Box>
       <Box>
@@ -103,8 +96,8 @@ const LoginForm = ({ login, registerFormRef, addUser }) => {
           '@media (max-width: 442px)': {
             fontSize: '1.5rem',
           },
-        }}>Not a member yet? Register below!</Typography>
-        <Togglable buttonLabel='Register' ref={registerFormRef}>
+        }}>Eikö sinulla ole vielä käyttäjää? Reksiteröidy</Typography>
+        <Togglable buttonLabel='Rekisteröidy' ref={registerFormRef}>
           <RegisterPage addUser={addUser}/>
         </Togglable>
       </Box>

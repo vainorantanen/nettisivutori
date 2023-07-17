@@ -1,51 +1,52 @@
 const router = require('express').Router()
-const FeedPost = require('../models/feedpost')
+const FeedBid = require('../models/feedbid')
 
 const { userExtractor } = require('../utils/middleware')
 
 router.get('/', async (request, response) => {
-  const feedPosts = await FeedPost
+  const feedBids = await FeedBid
     .find({})
     .populate('user', { name: 1, imageurl: 1 })
 
-  response.json(feedPosts)
+  response.json(feedBids)
 })
 
 router.post('/', userExtractor, async (request, response) => {
   //console.log("RBODY", request.body)
-  const { description, timeStamp, isOpen } = request.body
+  const { description, timeStamp, isApproved } = request.body
   //console.log("aINFO", additionalinfo)
-  const feedPost = new FeedPost({
+  const feedBid = new FeedBid({
     description,
     timeStamp,
-    isOpen
+    isApproved
   })
 
   const user = request.user
-  if (!user || user.isCompany === true) {
+
+  if (!user || user.isCompany === false) {
     return response.status(401).json({ error: 'operation not permitted' })
   }
 
-  feedPost.user = user._id
+  feedBid.user = user._id
 
-  let createdFeedPost = await feedPost.save()
+  let createdFeedBid = await feedBid.save()
 
-  user.feedPosts = user.feedPosts.concat(createdFeedPost._id)
+  user.feedBids = user.feedBids.concat(createdFeedBid._id)
   await user.save()
 
-  createdFeedPost = await FeedPost.findById(createdFeedPost._id).populate('user')
+  createdFeedBid = await FeedBid.findById(createdFeedBid._id).populate('user')
 
-  response.status(201).json(createdFeedPost)
+  response.status(201).json(createdFeedBid)
 })
 
 router.put('/:id', async (request, response) => {
   const { likes, description } = request.body
 
-  let updatedFeedPost = await FeedPost.findByIdAndUpdate(request.params.id,  { likes, description }, { new: true })
+  let updatedFeedBid = await FeedBid.findByIdAndUpdate(request.params.id,  { likes, description }, { new: true })
 
-  updatedFeedPost = await FeedPost.findById(updatedFeedPost._id).populate('user')
+  updatedFeedBid = await FeedBid.findById(updatedFeedBid._id).populate('user')
 
-  response.json(updatedFeedPost)
+  response.json(updatedFeedBid)
 })
 /*
 router.delete('/:id', userExtractor, async (request, response) => {

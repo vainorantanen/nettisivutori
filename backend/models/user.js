@@ -16,15 +16,6 @@ const userSchema = mongoose.Schema({
     type: String,
     required: true
   },
-  courses: [
-    {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: 'Course'
-    }
-  ],
-  imageurl : {
-    type : String
-  },
   description: {
     type: String
   },
@@ -36,6 +27,12 @@ const userSchema = mongoose.Schema({
     {
       type: mongoose.Schema.Types.ObjectId,
       ref: 'FeedPost'
+    }
+  ],
+  feedBids: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'FeedBid'
     }
   ]
 })

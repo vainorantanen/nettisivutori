@@ -22,7 +22,7 @@ const AddFeedPostForm = ({ user, feedPosts, setFeedPosts }) => {
   const handleSubmit = async (event) => {
     event.preventDefault()
     console.log('handlesubmit', description)
-    await addFeedPost({ description, timeStamp : new Date() })
+    await addFeedPost({ description, timeStamp : new Date(), isOpen: true })
     setDescription('')
   }
 
@@ -51,6 +51,7 @@ const AddFeedPostForm = ({ user, feedPosts, setFeedPosts }) => {
       flexDirection: 'column',
       alignItems: 'center',
       justifyContent: 'center',
+      minHeight: '100vh'
     }}>
       <Typography
         sx={{
@@ -62,7 +63,7 @@ const AddFeedPostForm = ({ user, feedPosts, setFeedPosts }) => {
           },
         }}
       >
-          Write a post
+          Lisää ilmoitus
       </Typography>
 
       <Box component="form" onSubmit={handleSubmit}
@@ -99,7 +100,7 @@ const AddFeedPostForm = ({ user, feedPosts, setFeedPosts }) => {
               backgroundImage: 'linear-gradient(to bottom, #003eff, #006eff)' }
           }}
         >
-          Publish
+          Julkaise
         </Button>
       </Box>
     </Container>

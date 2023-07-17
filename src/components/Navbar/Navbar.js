@@ -36,7 +36,7 @@ const StyledButton = styled(Button)({
   transition: 'transform 0.3s',
   '&:hover': {
     transform: 'scale(1.05)',
-    backgroundImage: 'linear-gradient(to bottom, #003eff, #006eff)' }
+    backgroundImage: 'linear-gradient(to bottom, #C4C4C4, #BCBCBC)' }
 })
 
 const Navbar = ({ user, logout }) => {
@@ -63,11 +63,16 @@ const Navbar = ({ user, logout }) => {
             <StyledButton color="inherit" component={Link} to="/tarjouskilpailut">
               Avoimet tarjouskilpailut
             </StyledButton>
-            {user && user.isCompany === true ? (
+            {user && user.isCompany === false ? (
               <StyledButton color="inherit" component={Link} to="/lisaailmoitus">
                 Lisää ilmoitus
               </StyledButton>
             ) : null}
+            {user && (
+              <StyledButton color="inherit" component={Link} to="/profiili">
+                Profiili
+              </StyledButton>
+            )}
             <Typography className='logged-user' sx={{ marginTop: '0.5rem', marginLeft: '1rem', fontWeight: 'bold' }}>
               {user && (
                 <>{user.name} Kirjautuneena sisään</>

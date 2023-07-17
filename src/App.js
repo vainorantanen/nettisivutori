@@ -27,6 +27,7 @@ import { createTheme } from '@mui/material/styles'
 import Home from './components/Home/Home'
 import Feed from './components/Feed/Feed'
 import AddFeedPostForm from './components/Feed/AddFeedPostForm'
+import Profile from './Profile/Profile'
 
 const theme = createTheme({
   typography: {
@@ -105,6 +106,7 @@ const App = () => {
             addUser={addUser}/>} />
           <Route path='/tarjouskilpailut' element={<Feed feedPosts={feedPosts}/>} />
           <Route path='/lisaailmoitus' element={<AddFeedPostForm user={user} feedPosts={feedPosts} setFeedPosts={setFeedPosts}/>} />
+          <Route path='/profiili' element={<Profile user={user} />} />
         </Routes>
         <Footer />
       </Box>

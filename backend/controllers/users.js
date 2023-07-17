@@ -3,8 +3,7 @@ const router = require('express').Router()
 const User = require('../models/user')
 
 router.post('/', async (request, response) => {
-  const { username, name, password, imageurl, description,
-    isCompany } = request.body
+  const { username, name, password, description, isCompany } = request.body
 
   if ( !password || password.length < 3) {
     return response.status(400).json({
@@ -19,7 +18,6 @@ router.post('/', async (request, response) => {
     username,
     name,
     passwordHash,
-    imageurl,
     description,
     isCompany
   })
@@ -31,8 +29,7 @@ router.post('/', async (request, response) => {
 
 router.get('/', async (request, response) => {
   const users = await User.find({})
-    .populate('courses', { title: 1, company: 1, url: 1, likes: 1 })
-    .populate('feedPosts', { description: 1, likes: 1, timeStamp: 1 })
+    .populate('feedPosts', { description: 1, timeStamp: 1 })
 
   response.json(users)
 })

@@ -4,7 +4,7 @@ import { Box, Container, Typography } from '@mui/material'
 
 const CompaniesList = ({ users }) => {
   return (
-    <Container sx={{ marginTop: '8rem' }}>
+    <Container sx={{ marginTop: '8rem', minHeight: '100vh' }}>
       <Typography
         sx={{
           fontSize: '2.5rem',

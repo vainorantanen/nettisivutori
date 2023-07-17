@@ -13,7 +13,6 @@ const RegisterPage = ({ addUser }) => {
   const [username, setUsername] = useState('')
   const [name, setName] = useState('')
   const [password, setPassword] = useState('')
-  const [imageurl, setImageurl] = useState('')
   const [ description, setDescription ] = useState('')
   const [isTermsAccepted, setIsTermsAccepted] = useState(false)
   const [openTermsDialog, setOpenTermsDialog] = useState(false)
@@ -25,16 +24,15 @@ const RegisterPage = ({ addUser }) => {
 
     if (password !== confirmPassword) {
       // Passwords don't match, handle error here (e.g., display an error message)
-      console.log('Passwords dont match!')
+      console.log('Salasanat eivät täsmää!')
       return
     }
 
-    await addUser({ username, name, password, imageurl, description,
+    await addUser({ username, name, password, description,
       isCompany })
     setName('')
     setPassword('')
     setUsername('')
-    setImageurl('')
     setDescription('')
     setIsCompany(false)
     setIsTermsAccepted(false)
@@ -70,17 +68,17 @@ const RegisterPage = ({ addUser }) => {
           fontSize: '1.5rem',
         },
       }}>
-        Create a new user
+        Luo uusi käyttäjä
       </Typography>
       <Box sx={{ maxWidth: '30rem', }} component="form" onSubmit={handleSubmit}>
         <FormControlLabel
           control={<Checkbox checked={isCompany} onChange={handleCompanyCheckboxChange} />}
-          label="I want the user to be registered as a company"
+          label="Haluan rekisteröidä käyttäjän nettisivuja valmistavana yrityksenä"
           sx={{ marginBottom: '1rem' }}
         />
         <TextField
           id="register-username"
-          label="Username"
+          label="Käyttäjätunnus"
           required
           fullWidth
           value={username}
@@ -89,7 +87,7 @@ const RegisterPage = ({ addUser }) => {
         />
         <TextField
           id="name"
-          label="Name (visible to other users)"
+          label="Nimi (halutessasi tämä näkyy muille käyttäjille)"
           required
           fullWidth
           value={name}
@@ -98,7 +96,7 @@ const RegisterPage = ({ addUser }) => {
         />
         <TextField
           id="register-password"
-          label="Password"
+          label="Salasana"
           type="password"
           required
           fullWidth
@@ -108,7 +106,7 @@ const RegisterPage = ({ addUser }) => {
         />
         <TextField
           id="confirm-password"
-          label="Confirm Password"
+          label="Vahvista salasana"
           type="password"
           required
           fullWidth
@@ -117,16 +115,8 @@ const RegisterPage = ({ addUser }) => {
           margin="normal"
         />
         <TextField
-          id="imageurl"
-          label="Logo URL"
-          fullWidth
-          value={imageurl}
-          onChange={({ target }) => setImageurl(target.value)}
-          margin="normal"
-        />
-        <TextField
           id="description"
-          label="Add a description for the user"
+          label="Kerro itsestäsi muutamalla sanalla (valinnainen)"
           fullWidth
           multiline
           rows={4}
@@ -166,7 +156,7 @@ const RegisterPage = ({ addUser }) => {
               },
             }}
           >
-            Register!
+            Reksiteröidy
           </Button>
         </Box>
       </Box>
