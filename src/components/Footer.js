@@ -21,7 +21,7 @@ const Footer = () => {
           fontWeight: 'bold',
           color: '#ffffff',
         }}>
-          My Company
+          Nettisivutori
         </Typography>
 
         <Typography variant="body1" className="copyright">
@@ -93,7 +93,7 @@ const Footer = () => {
           color: 'rgb(255, 255, 255)',
           fontStyle: 'italic',
         }}>
-          Powered by My Company
+          Powered by Webline Software
         </Typography>
       </Box>
     </footer>

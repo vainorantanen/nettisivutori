@@ -6,7 +6,6 @@ const mongoose = require('mongoose')
 require('express-async-errors')
 const path = require('path')
 
-const coursesRouter = require('./backend/controllers/courses')
 const usersRouter = require('./backend/controllers/users')
 const loginRouter = require('./backend/controllers/login')
 const feedPostsRouter = require('./backend/controllers/feedposts')
@@ -33,7 +32,6 @@ app.use(express.static('build'))
 
 app.use(express.json())
 
-app.use('/api/courses', coursesRouter)
 app.use('/api/users', usersRouter)
 app.use('/api/login', loginRouter)
 app.use('/api/feedposts', feedPostsRouter)

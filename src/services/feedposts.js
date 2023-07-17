@@ -1,6 +1,6 @@
 import axios from 'axios'
 const baseUrl = '/api/feedposts'
-import storageService from '../services/storage'
+import storageService from './storage'
 
 const headers = {
   'Authorization': storageService.loadUser() ? `Bearer ${storageService.loadUser().token}` : null

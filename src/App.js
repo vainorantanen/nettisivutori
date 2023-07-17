@@ -1,15 +1,13 @@
 import React from 'react'
 import { useState, useEffect, useRef } from 'react'
 
-import courseService from './services/courses'
+import bidService from './services/feedposts'
 import loginService from './services/login'
 import usersService from './services/users'
 
 import Notification from './components/Notification'
 import storageService from './services/storage'
 import LoginForm from './components/LoginForm'
-import AddCoursePage from './components/AddCoursePage'
-import CourseInfoPage from './components/CourseInfoPage'
 import CompaniesList from './components/CompaniesList'
 import CompanyInfoPage from './components/CompanyInfoPage'
 
@@ -24,7 +22,7 @@ import { Box } from '@mui/material'
 
 import { ThemeProvider } from '@emotion/react'
 import { createTheme } from '@mui/material/styles'
-import Home from './components/Home'
+import Home from './components/Home/Home'
 import Feed from './components/Feed/Feed'
 
 const theme = createTheme({
@@ -47,7 +45,7 @@ const App = () => {
   }, [])
 
   useEffect(() => {
-    courseService.getAll().then(courses =>
+    bidService.getAll().then(courses =>
       setCourses( courses )
     )
   }, [])
@@ -84,7 +82,7 @@ const App = () => {
   }
 
   const addCourse = async (newCourse) => {
-    const addedCourse = await courseService.create(newCourse)
+    const addedCourse = await bidService.create(newCourse)
     notifyWith(`A new course '${newCourse.title}' by '${newCourse.company}' added`)
     setCourses(courses.concat(addedCourse))
   }
@@ -98,7 +96,7 @@ const App = () => {
 
   const like = async (course) => {
     const courseToUpdate = { ...course, likes: course.likes + 1, user: course.user.id }
-    const updatedCourse = await courseService.update(courseToUpdate)
+    const updatedCourse = await bidService.update(courseToUpdate)
     notifyWith(`A like for the blog '${course.title}'`)
     setCourses(courses.map(c => c.id === course.id ? updatedCourse : c))
   }
@@ -110,13 +108,11 @@ const App = () => {
         <Notification info={info}/>
         <Routes>
           <Route path='/' element={<Home courses={courses} />}/>
-          <Route path='/addcourse' element={<AddCoursePage addCourse={addCourse}/>} />
-          <Route path='/courses/:id' element={<CourseInfoPage courses={courses} like={like} />} />
-          <Route path='/companies' element={<CompaniesList users={users}/>} />
-          <Route path='/companies/:id' element={<CompanyInfoPage users={users}/>} />
+          <Route path='/yritykset' element={<CompaniesList users={users}/>} />
+          <Route path='/yritykset/:id' element={<CompanyInfoPage users={users}/>} />
           <Route path='/login' element={<LoginForm login={login} info={info} registerFormRef={registerFormRef}
             addUser={addUser}/>} />
-          <Route path='/feed' element={<Feed user={user}/>} />
+          <Route path='/tarjouskilpailut' element={<Feed user={user}/>} />
         </Routes>
         <Footer />
       </Box>
