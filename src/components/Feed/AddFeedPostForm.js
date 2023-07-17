@@ -10,7 +10,7 @@ import {
 
 import feedPostService from '../../services/feedposts'
 
-const AddFeedPostForm = ({ feedPosts, setFeedPosts }) => {
+const AddFeedPostForm = ({ user, feedPosts, setFeedPosts }) => {
   const [description, setDescription] = useState('')
 
   const addFeedPost = async (newPost) => {
@@ -24,6 +24,25 @@ const AddFeedPostForm = ({ feedPosts, setFeedPosts }) => {
     console.log('handlesubmit', description)
     await addFeedPost({ description, timeStamp : new Date() })
     setDescription('')
+  }
+
+  if (!user) {
+    return (
+      <Container sx={{ marginTop: '5rem', minHeight: '100vh' }}>
+        <Typography
+          sx={{
+            fontSize: '1.3rem',
+            textAlign: 'center',
+            marginTop: '2rem',
+            '@media (max-width: 442px)': {
+              fontSize: '1rem',
+            },
+          }}
+        >
+            Kirjaudu sisään lisätäksesi ilmoitus
+        </Typography>
+      </Container>
+    )
   }
 
   return (
@@ -58,10 +77,10 @@ const AddFeedPostForm = ({ feedPosts, setFeedPosts }) => {
       >
         <TextField
           id="description"
-          label="Write your post here..."
+          label="Minkälaista nettisivua etsit?"
           //placeholder="Course description"
           multiline
-          rows={4}
+          rows={8}
           value={description}
           onChange={({ target }) => setDescription(target.value)}
           sx={{ marginBottom: '1rem' }}

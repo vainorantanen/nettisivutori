@@ -1,7 +1,7 @@
 import React from 'react'
 import { useState, useEffect, useRef } from 'react'
 
-import bidService from './services/feedposts'
+import feedPostService from './services/feedposts'
 import loginService from './services/login'
 import usersService from './services/users'
 
@@ -10,6 +10,8 @@ import storageService from './services/storage'
 import LoginForm from './components/LoginForm'
 import CompaniesList from './components/CompaniesList'
 import CompanyInfoPage from './components/CompanyInfoPage'
+
+import ScrollToTop from './components/ScrollToTop'
 
 import {
   Routes, Route
@@ -24,6 +26,7 @@ import { ThemeProvider } from '@emotion/react'
 import { createTheme } from '@mui/material/styles'
 import Home from './components/Home/Home'
 import Feed from './components/Feed/Feed'
+import AddFeedPostForm from './components/Feed/AddFeedPostForm'
 
 const theme = createTheme({
   typography: {
@@ -32,22 +35,22 @@ const theme = createTheme({
 })
 
 const App = () => {
-  const [courses, setCourses] = useState([])
   const [user, setUser] = useState('')
   const [info, setInfo] = useState({ message: null })
   const [users, setUsers] = useState([])
+  const [ feedPosts, setFeedPosts ] = useState([])
 
   const registerFormRef = useRef()
 
   useEffect(() => {
-    const user = storageService.loadUser()
-    setUser(user)
+    feedPostService.getAll().then(posts =>
+      setFeedPosts( posts )
+    )
   }, [])
 
   useEffect(() => {
-    bidService.getAll().then(courses =>
-      setCourses( courses )
-    )
+    const user = storageService.loadUser()
+    setUser(user)
   }, [])
 
   useEffect(() => {
@@ -81,12 +84,6 @@ const App = () => {
     notifyWith('logged out')
   }
 
-  const addCourse = async (newCourse) => {
-    const addedCourse = await bidService.create(newCourse)
-    notifyWith(`A new course '${newCourse.title}' by '${newCourse.company}' added`)
-    setCourses(courses.concat(addedCourse))
-  }
-
   const addUser = async (newUser) => {
     const addedUser = await usersService.create(newUser)
     notifyWith('A new user added')
@@ -94,25 +91,20 @@ const App = () => {
     registerFormRef.current.toggleVisibility()
   }
 
-  const like = async (course) => {
-    const courseToUpdate = { ...course, likes: course.likes + 1, user: course.user.id }
-    const updatedCourse = await bidService.update(courseToUpdate)
-    notifyWith(`A like for the blog '${course.title}'`)
-    setCourses(courses.map(c => c.id === course.id ? updatedCourse : c))
-  }
-
   return (
     <ThemeProvider theme={theme}>
       <Box>
         <Navbar user={user} logout={logout}/>
         <Notification info={info}/>
+        <ScrollToTop />
         <Routes>
-          <Route path='/' element={<Home courses={courses} />}/>
+          <Route path='/' element={<Home />}/>
           <Route path='/yritykset' element={<CompaniesList users={users}/>} />
           <Route path='/yritykset/:id' element={<CompanyInfoPage users={users}/>} />
           <Route path='/login' element={<LoginForm login={login} info={info} registerFormRef={registerFormRef}
             addUser={addUser}/>} />
-          <Route path='/tarjouskilpailut' element={<Feed user={user}/>} />
+          <Route path='/tarjouskilpailut' element={<Feed feedPosts={feedPosts}/>} />
+          <Route path='/lisaailmoitus' element={<AddFeedPostForm user={user} feedPosts={feedPosts} setFeedPosts={setFeedPosts}/>} />
         </Routes>
         <Footer />
       </Box>

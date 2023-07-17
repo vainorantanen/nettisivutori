@@ -13,10 +13,9 @@ router.get('/', async (request, response) => {
 
 router.post('/', userExtractor, async (request, response) => {
   //console.log("RBODY", request.body)
-  const { likes, description, timeStamp } = request.body
+  const { description, timeStamp } = request.body
   //console.log("aINFO", additionalinfo)
   const feedPost = new FeedPost({
-    likes: likes ? likes : 0,
     description,
     timeStamp
   })

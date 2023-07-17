@@ -14,7 +14,7 @@ const CompaniesList = ({ users }) => {
           },
         }}
       >
-          Companies
+          Yritykset
       </Typography>
 
       <Typography
@@ -27,7 +27,7 @@ const CompaniesList = ({ users }) => {
             fontSize: '1.1rem',
           },
         }}
-      >Companies that provide micro degrees</Typography>
+      >Tutustu yrityksiin, jotka aktiivisesti osallistuvat tarjouskilpailuihin</Typography>
       <Box
         sx={{
           display: 'flex',

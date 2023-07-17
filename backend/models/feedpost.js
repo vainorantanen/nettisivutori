@@ -1,9 +1,6 @@
 const mongoose = require('mongoose')
 
 const schema = mongoose.Schema({
-  likes: {
-    type: Number,
-  },
   user: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'User'
@@ -14,6 +11,10 @@ const schema = mongoose.Schema({
   },
   timeStamp: {
     type: Date,
+    required: true
+  },
+  isOpen: {
+    type: Boolean,
     required: true
   }
 })

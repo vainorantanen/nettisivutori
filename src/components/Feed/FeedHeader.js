@@ -1,5 +1,6 @@
-import { Container, Typography } from '@mui/material'
+import { Container, Typography, Button } from '@mui/material'
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 const FeedHeader = () => {
   return (
@@ -12,7 +13,7 @@ const FeedHeader = () => {
             fontSize: '1.5rem',
           },
         }}
-      >Feed</Typography>
+      >Avoimet tarjouskilpailut</Typography>
 
       <Typography
         sx={{
@@ -22,7 +23,25 @@ const FeedHeader = () => {
             fontSize: '1rem',
           },
         }}
-      >See the latest news and posts by the companies!</Typography>
+      >Seuraa meneillään olevia tarjouskilpailuja nettisivuista</Typography>
+      <Button
+        component={Link}
+        to="/lisaailmoitus"
+        sx={{
+          backgroundColor: 'blue',
+          color: 'white',
+          transition: 'transform 0.3s',
+          marginTop: '1rem',
+          marginBottom: '1rem',
+          marginLeft: '1rem',
+          borderRadius: '1rem',
+          '&:hover': {
+            transform: 'scale(1.05)',
+            backgroundImage: 'linear-gradient(to bottom, #003eff, #006eff)',
+          },
+        }}
+      >Lisää ilmoitus
+      </Button>
     </Container>
   )
 }
