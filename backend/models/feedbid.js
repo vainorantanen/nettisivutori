@@ -17,6 +17,10 @@ const schema = mongoose.Schema({
     type: Boolean,
     required: true
   },
+  price: {
+    type: Number,
+    required: true
+  }
 })
 
 schema.set('toJSON', {

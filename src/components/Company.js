@@ -35,7 +35,7 @@ const Company = ({ company }) => {
         }}
       />
       <Box>
-        <Typography component={Link} to={`/companies/${company.id}`}>{company.name}
+        <Typography component={Link} to={`/yritykset/${company.id}`}>{company.name}
         </Typography>
       </Box>
     </Box>

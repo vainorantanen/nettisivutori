@@ -28,6 +28,7 @@ import Home from './components/Home/Home'
 import Feed from './components/Feed/Feed'
 import AddFeedPostForm from './components/Feed/AddFeedPostForm'
 import Profile from './Profile/Profile'
+import SingleFeedPost from './components/Feed/SingleFeedPost'
 
 const theme = createTheme({
   typography: {
@@ -107,6 +108,7 @@ const App = () => {
           <Route path='/tarjouskilpailut' element={<Feed feedPosts={feedPosts}/>} />
           <Route path='/lisaailmoitus' element={<AddFeedPostForm user={user} feedPosts={feedPosts} setFeedPosts={setFeedPosts}/>} />
           <Route path='/profiili' element={<Profile user={user} />} />
+          <Route path='/tarjouskilpailut/:id' element={<SingleFeedPost feedPosts={feedPosts} user={user} />} />
         </Routes>
         <Footer />
       </Box>

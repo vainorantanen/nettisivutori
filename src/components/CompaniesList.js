@@ -39,7 +39,7 @@ const CompaniesList = ({ users }) => {
           borderRadius: '1rem'
         }}
       >
-        {users.map((u) => (
+        {users.filter(user => user.isCompany).map((u) => (
           <Company key={u.id} company={u} />
         ))}
       </Box>

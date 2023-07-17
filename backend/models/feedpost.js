@@ -16,7 +16,13 @@ const schema = mongoose.Schema({
   isOpen: {
     type: Boolean,
     required: true
-  }
+  },
+  feedBids: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'FeedBid'
+    }
+  ]
 })
 
 schema.set('toJSON', {

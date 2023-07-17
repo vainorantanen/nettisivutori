@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom'
 const CompanyInfoPage = ({ users }) => {
   const id = useParams().id
   const company = users.find((c) => c.id === id)
+
   if (!company) {
     return null
   }
@@ -16,7 +17,7 @@ const CompanyInfoPage = ({ users }) => {
         flexDirection: 'column',
         justifyContent: 'center',
         alignItems: 'center',
-        marginTop: '5rem',
+        marginTop: '1rem',
         minHeight: '100vh',
       }}
     >
@@ -39,17 +40,10 @@ const CompanyInfoPage = ({ users }) => {
             width: '20rem', height: 'auto' }}
         ></img>
       </Box>
-      <Typography variant="h6">Micro degrees by {company.name}</Typography>
-      {company.courses.length === 0 && <Typography>No micro degrees yet!</Typography>}
-      {company.courses.length > 0 && (
-        <ul>
-          {company.courses.map((c) => (
-            <li key={c.id}>
-              <Typography component={Link} to={`/courses/${c.id}`}>{c.title}</Typography>
-            </li>
-          ))}
-        </ul>
-      )}
+      <Box>
+        <Typography sx={{ marginBottom: '2rem' }}>Tietoa yrityksestä</Typography>
+        <Typography>{company.description}</Typography>
+      </Box>
     </Container>
   )
 }

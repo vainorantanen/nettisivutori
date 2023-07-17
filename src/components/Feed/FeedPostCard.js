@@ -1,7 +1,9 @@
 import React from 'react'
-import { Typography, Box } from '@mui/material'
+import { Typography, Box, Button } from '@mui/material'
+import { Link } from 'react-router-dom'
 
 const FeedPostCard = ({ post }) => {
+
   return (
     <Box
       sx={{
@@ -45,6 +47,9 @@ const FeedPostCard = ({ post }) => {
         </div>
       </Box>
       <Typography style={{ whiteSpace: 'break-spaces' }}>{post.description}</Typography>
+      <Button component={Link} to={`/tarjouskilpailut/${post.id}`}>
+            Tarkastele
+      </Button>
     </Box>
   )
 }
