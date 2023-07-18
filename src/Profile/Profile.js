@@ -1,5 +1,6 @@
-import { Container, Typography } from '@mui/material'
 import React from 'react'
+import CompanyProfile from './CompanyProfile'
+import PrivateProfile from './PrivateProfile'
 
 const Profile = ({ user }) => {
 
@@ -9,16 +10,12 @@ const Profile = ({ user }) => {
 
   if (user.isCompany === true) {
     return (
-      <Container sx={{ marginTop: '7rem', minHeight: '100vh' }}>
-        <Typography>Firman Profiili</Typography>
-      </Container>
+      <CompanyProfile user={user}/>
     )
   }
 
   return (
-    <Container sx={{ marginTop: '7rem', minHeight: '100vh' }}>
-      <Typography>Yksityinen Profiili</Typography>
-    </Container>
+    <PrivateProfile user={user}/>
   )
 }
 

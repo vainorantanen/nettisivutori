@@ -7,7 +7,7 @@ router.get('/', async (request, response) => {
   const feedPosts = await FeedPost
     .find({})
     .populate('user', { name: 1, imageurl: 1 })
-
+    .populate('feedBids')
   response.json(feedPosts)
 })
 

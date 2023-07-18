@@ -1,14 +1,13 @@
-import { Typography, Box, Button, Container } from '@mui/material'
-import React from 'react'
+import { Typography, Box, Container } from '@mui/material'
+import React, { useState } from 'react'
 import { useParams } from 'react-router-dom'
 import FeedBidCard from './FeedBidCard'
 import Togglable from '../Togglable'
 import MakeBidForm from './MakeBidForm'
 
 const SingleFeedPost = ({ feedPosts, user }) => {
-
   const id = useParams().id
-  const post = feedPosts.find((c) => c.id === id)
+  const [ post, setPost ] = useState(feedPosts.find((c) => c.id === id))
 
   if (!post) {
     return null
@@ -39,17 +38,6 @@ const SingleFeedPost = ({ feedPosts, user }) => {
             flexWrap: 'wrap',
           }}
         >
-          <img
-            src={`${post.user.imageurl}`}
-            alt='Company logo'
-            style={{
-              border: '1px solid black',
-              borderRadius: '1rem',
-              width: '5rem',
-              height: 'auto',
-              marginRight: '1rem',
-            }}
-          />
           <div>
             <Typography>{post.user.name}</Typography>
             {post.timeStamp ? (
@@ -61,7 +49,7 @@ const SingleFeedPost = ({ feedPosts, user }) => {
       </Box>
       {user && user.isCompany === true && (
         <Togglable buttonLabel='Tee tarjous'>
-          <MakeBidForm post={post}/>
+          <MakeBidForm post={post} setPost={setPost}/>
         </Togglable>
       )}
       <Typography>Tarjoukset</Typography>

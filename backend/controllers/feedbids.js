@@ -1,5 +1,6 @@
 const router = require('express').Router()
 const FeedBid = require('../models/feedbid')
+const FeedPost = require('../models/feedpost')
 
 const { userExtractor } = require('../utils/middleware')
 
@@ -14,13 +15,13 @@ router.get('/', async (request, response) => {
 router.post('/', userExtractor, async (request, response) => {
   //console.log("RBODY", request.body)
   const { description, timeStamp, isApproved, price, target } = request.body
+  console.log({ description, timeStamp, isApproved, price, target })
   //console.log("aINFO", additionalinfo)
   const feedBid = new FeedBid({
     description,
     timeStamp,
     isApproved,
     price,
-    target
   })
 
   const user = request.user
@@ -30,11 +31,17 @@ router.post('/', userExtractor, async (request, response) => {
   }
 
   feedBid.user = user._id
+  feedBid.target = target.id
 
   let createdFeedBid = await feedBid.save()
 
   user.feedBids = user.feedBids.concat(createdFeedBid._id)
   await user.save()
+
+  const targetPost = await FeedPost.findById(target.id)
+  targetPost.feedBids = targetPost.feedBids.concat(createdFeedBid._id)
+
+  await targetPost.save()
 
   createdFeedBid = await FeedBid.findById(createdFeedBid._id).populate('user')
 
