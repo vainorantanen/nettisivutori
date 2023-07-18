@@ -34,7 +34,7 @@ const Togglable = forwardRef((props, ref) => {
               backgroundColor: 'red' },
           }}
 
-          onClick={toggleVisibility}>Cancel</Button>
+          onClick={toggleVisibility}>Sulje</Button>
       </div>
     </Container>
   )

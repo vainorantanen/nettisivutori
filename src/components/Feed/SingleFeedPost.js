@@ -2,6 +2,8 @@ import { Typography, Box, Button, Container } from '@mui/material'
 import React from 'react'
 import { useParams } from 'react-router-dom'
 import FeedBidCard from './FeedBidCard'
+import Togglable from '../Togglable'
+import MakeBidForm from './MakeBidForm'
 
 const SingleFeedPost = ({ feedPosts, user }) => {
 
@@ -56,12 +58,12 @@ const SingleFeedPost = ({ feedPosts, user }) => {
           </div>
         </Box>
         <Typography style={{ whiteSpace: 'break-spaces' }}>{post.description}</Typography>
-        {user && user.isCompany === true && (
-          <Button>
-          Tee tarjous
-          </Button>
-        )}
       </Box>
+      {user && user.isCompany === true && (
+        <Togglable buttonLabel='Tee tarjous'>
+          <MakeBidForm post={post}/>
+        </Togglable>
+      )}
       <Typography>Tarjoukset</Typography>
       {post.feedBids.length > 0 ? (
         post.feedBids.map((bid) => (

@@ -20,6 +20,10 @@ const schema = mongoose.Schema({
   price: {
     type: Number,
     required: true
+  },
+  target: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'FeedPost'
   }
 })
 

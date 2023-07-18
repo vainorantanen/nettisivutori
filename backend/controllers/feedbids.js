@@ -6,20 +6,21 @@ const { userExtractor } = require('../utils/middleware')
 router.get('/', async (request, response) => {
   const feedBids = await FeedBid
     .find({})
-    .populate('user', { name: 1, imageurl: 1 })
+    .populate('user', { name: 1 })
 
   response.json(feedBids)
 })
 
 router.post('/', userExtractor, async (request, response) => {
   //console.log("RBODY", request.body)
-  const { description, timeStamp, isApproved, price } = request.body
+  const { description, timeStamp, isApproved, price, target } = request.body
   //console.log("aINFO", additionalinfo)
   const feedBid = new FeedBid({
     description,
     timeStamp,
     isApproved,
-    price
+    price,
+    target
   })
 
   const user = request.user
