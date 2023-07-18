@@ -3,27 +3,27 @@ import React from 'react'
 import { useState } from 'react'
 import feedBidService from '../../services/feedbids'
 
-const MakeBidForm = ({ post, feedPosts, setFeedPosts }) => {
+const MakeBidForm = ({ post, setPost }) => {
   const [description, setDescription] = useState('')
   const [ price, setPrice ] = useState(0)
 
-  const addFeedPost = async (newPost) => {
-    await feedBidService.create(newPost)
+  const addFeedBid = async (newPost) => {
+    const addedBid = await feedBidService.create(newPost)
     //notifyWith(`A new course '${newCourse.title}' by '${newCourse.company}' added`)
-    //setFeedPosts(feedPosts.concat(addedPost))
+    setPost({ ...post, feedBids: post.feedBids.concat(addedBid) })
   }
 
   const handleSubmit = async (event) => {
     event.preventDefault()
     console.log('handlesubmit', description)
-    await addFeedPost({ description, timeStamp : new Date(), isApproved: false, price, target: post })
+    await addFeedBid({ description, timeStamp : new Date(), isApproved: false, price, target: post })
     setDescription('')
     setPrice(0)
   }
 
   return (
-    <Container>
-      <Typography>Tarjoa</Typography>
+    <Container sx={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center' }}>
+      <Typography sx={{ marginTop: '1rem' }}>Tarjoa</Typography>
       <Box component="form" onSubmit={handleSubmit}
         sx={{
           display: 'flex',

@@ -28,17 +28,6 @@ const FeedPostCard = ({ post }) => {
           flexWrap: 'wrap',
         }}
       >
-        <img
-          src={`${post.user.imageurl}`}
-          alt='Company logo'
-          style={{
-            border: '1px solid black',
-            borderRadius: '1rem',
-            width: '5rem',
-            height: 'auto',
-            marginRight: '1rem',
-          }}
-        />
         <div>
           <Typography>{post.user.name}</Typography>
           {post.timeStamp ? (
