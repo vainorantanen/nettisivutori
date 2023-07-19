@@ -1,6 +1,7 @@
 import React from 'react'
 import CompanyProfile from './CompanyProfile'
 import PrivateProfile from './PrivateProfile'
+import { Container } from '@mui/material'
 
 const Profile = ({ user }) => {
 
@@ -10,12 +11,16 @@ const Profile = ({ user }) => {
 
   if (user.isCompany === true) {
     return (
-      <CompanyProfile user={user}/>
+      <Container>
+        <CompanyProfile user={user}/>
+      </Container>
     )
   }
 
   return (
-    <PrivateProfile user={user}/>
+    <Container>
+      <PrivateProfile user={user}/>
+    </Container>
   )
 }
 
