@@ -25,6 +25,7 @@ router.post('/', userExtractor, async (request, response) => {
   })
 
   const user = request.user
+  console.log('user: ', user)
 
   if (!user || user.isCompany === false) {
     return response.status(401).json({ error: 'operation not permitted' })
