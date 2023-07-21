@@ -21,7 +21,7 @@ const PrivateProfile = ({ user, setUser }) => {
   }
 
   return (
-    <Container sx={{ marginTop: '7rem', minHeight: '100vh', backgroundColor: 'white', borderRadius: '1rem' }}>
+    <Container sx={{ marginTop: '7rem', minHeight: '100vh', backgroundColor: 'white', borderRadius: '1rem', marginBottom: '1rem' }}>
       <Typography>Käyttäjän {user.name} Profiili</Typography>
       <CompanyProfileInfo user={user} setUser={setUser} />
       <Typography>Seuraa ilmoitustesi tilannetta</Typography>

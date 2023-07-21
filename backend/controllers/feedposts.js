@@ -13,12 +13,15 @@ router.get('/', async (request, response) => {
 
 router.post('/', userExtractor, async (request, response) => {
   //console.log("RBODY", request.body)
-  const { description, timeStamp, isOpen } = request.body
+  const { description, timeStamp, isOpen, question1, question2, question3 } = request.body
   //console.log("aINFO", additionalinfo)
   const feedPost = new FeedPost({
     description,
     timeStamp,
-    isOpen
+    isOpen,
+    question1,
+    question2,
+    question3,
   })
 
   const user = request.user

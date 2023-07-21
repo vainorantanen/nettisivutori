@@ -22,7 +22,16 @@ const schema = mongoose.Schema({
       type: mongoose.Schema.Types.ObjectId,
       ref: 'FeedBid'
     }
-  ]
+  ],
+  question1: {
+    type: String
+  },
+  question2: {
+    type: String
+  },
+  question3: {
+    type: String
+  }
 })
 
 schema.set('toJSON', {
