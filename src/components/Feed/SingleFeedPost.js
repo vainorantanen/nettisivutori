@@ -1,31 +1,13 @@
-import { Typography, Box, Container, TextField, Button } from '@mui/material'
-import React, { useState, useEffect } from 'react'
+import { Typography, Box, Container } from '@mui/material'
+import React, { useState } from 'react'
 import { useParams } from 'react-router-dom'
 import FeedBidCard from './FeedBidCard'
 import Togglable from '../Togglable'
 import MakeBidForm from './MakeBidForm'
-import feedPostService from '../../services/feedposts'
 
 const SingleFeedPost = ({ feedPosts, user }) => {
   const id = useParams().id
   const [ post, setPost ] = useState(feedPosts.find((c) => c.id === id))
-  const [ description, setDescription ] = useState('')
-
-  console.log('user singlepostis: ', user)
-
-  useEffect(() => {
-    if (post) {
-      setDescription(post.description)
-    }
-  }, [])
-
-  const handleSubmit = async () => {
-    // Handle submit logic here
-    await feedPostService.update({ ...post, description: description })
-
-    // You can access the description value using the 'description' state variable
-    console.log('Submit clicked')
-  }
 
   if (!post) {
     return null
@@ -77,23 +59,6 @@ const SingleFeedPost = ({ feedPosts, user }) => {
         ))
       ): (
         <Typography>Ei vielä tarjouksia!</Typography>
-      )}
-      {user && user.name === post.user.name && (
-        <Box>
-          <Typography>Muokkaa ilmoituksen sisältöä</Typography>
-          <TextField
-            id="description"
-            label="Minkälaista nettisivua etsit?"
-            multiline
-            rows={8}
-            value={description}
-            onChange={({ target }) => setDescription(target.value)}
-            sx={{ marginBottom: '1rem' }}
-          />
-          <Button variant="contained" onClick={handleSubmit}>
-              Submit
-          </Button>
-        </Box>
       )}
     </Container>
   )

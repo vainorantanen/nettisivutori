@@ -3,6 +3,7 @@ import { Typography, Box, Button } from '@mui/material'
 import { Link } from 'react-router-dom'
 
 const FeedPostCard = ({ post }) => {
+
   return (
     <Box
       sx={{
@@ -43,7 +44,6 @@ const FeedPostCard = ({ post }) => {
         <Typography>Pääasiallinen tarkoitus: {post.question2}</Typography>
         <Typography>Ominaisuudet: {post.question3}</Typography>
       </Box>
-
       <Typography style={{ whiteSpace: 'break-spaces' }}>{post.description}</Typography>
       <Button
         component={Link}

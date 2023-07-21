@@ -70,7 +70,7 @@ const App = () => {
 
     setTimeout(() => {
       setInfo({ message: null } )
-    }, 3000)
+    }, 5000)
   }
 
   const login = async (username, password) => {

@@ -3,6 +3,8 @@ import { Container, Typography, Box } from '@mui/material'
 import CompanyProfileInfo from './CompanyProfileInfo'
 import feedpostService from '../services/feedposts'
 import FeedPostCard from '../components/Feed/FeedPostCard'
+import Togglable from '../components/Togglable'
+import ModifyPost from './ModifyPost'
 
 const PrivateProfile = ({ user, setUser }) => {
   const [userFeedPosts, setuserFeedPosts] = useState([])
@@ -28,6 +30,9 @@ const PrivateProfile = ({ user, setUser }) => {
       {userFeedPosts.map(m => (
         <Box key={m.id} sx={{ marginTop: '1rem' }}>
           <FeedPostCard post={m}/>
+          <Togglable buttonLabel='Muokkaa'>
+            <ModifyPost post={m}/>
+          </Togglable>
         </Box>
       ))}
     </Container>

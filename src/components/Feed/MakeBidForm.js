@@ -46,7 +46,7 @@ const MakeBidForm = ({ post, setPost }) => {
           id="description"
           label="Kerro tarjouksestasi tarkemmin"
           multiline
-          rows={8}
+          rows={12}
           value={description}
           onChange={({ target }) => setDescription(target.value)}
           sx={{ marginBottom: '1rem' }}
