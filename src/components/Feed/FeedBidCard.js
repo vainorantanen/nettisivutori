@@ -15,6 +15,11 @@ const FeedBidCard = ({ bid }) => {
       <Typography>Hinta: {bid.price} euroa</Typography>
       <Typography>Tarjous jätetty: {bid.timeStamp.split('T')[0]}</Typography>
       <Typography>{bid.description}</Typography>
+      {bid.isApproved ? (
+        <Typography>Hyväksytty ilmoittajan toimesta</Typography>
+      ) : (
+        <Typography>Avoinna oleva tarjous</Typography>
+      )}
     </Box>
   )
 }

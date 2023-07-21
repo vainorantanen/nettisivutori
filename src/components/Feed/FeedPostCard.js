@@ -36,7 +36,18 @@ const FeedPostCard = ({ post }) => {
         </div>
       </Box>
       <Typography style={{ whiteSpace: 'break-spaces' }}>{post.description}</Typography>
-      <Button component={Link} to={`/tarjouskilpailut/${post.id}`}>
+      <Button component={Link} to={`/tarjouskilpailut/${post.id}`}
+        variant='contained'
+        sx={{ backgroundColor: 'blue', color: 'white',
+          transition: 'transform 0.3s',
+          marginTop: '1rem',
+          maxWidth: '9rem',
+          marginBottom: '1rem',
+          '&:hover': {
+            transform: 'scale(1.05)',
+            backgroundImage: 'linear-gradient(to bottom, #003eff, #006eff)' }
+        }}
+      >
             Tarkastele
       </Button>
     </Box>
