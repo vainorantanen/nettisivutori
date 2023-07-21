@@ -28,9 +28,9 @@ const AddFeedPostForm = ({ user, feedPosts, setFeedPosts }) => {
     setDescription('')
   }
 
-  if (!user) {
+  if (!user || user.isCompany) {
     return (
-      <Container sx={{ marginTop: '5rem', minHeight: '100vh' }}>
+      <Container sx={{ marginTop: '8rem', minHeight: '100vh' }}>
         <Typography
           sx={{
             fontSize: '1.3rem',
@@ -41,7 +41,7 @@ const AddFeedPostForm = ({ user, feedPosts, setFeedPosts }) => {
             },
           }}
         >
-            Kirjaudu sisään lisätäksesi ilmoitus
+            Kirjaudu kuluttajatilillä sisään lisätäksesi ilmoitus.
         </Typography>
       </Container>
     )
@@ -53,13 +53,15 @@ const AddFeedPostForm = ({ user, feedPosts, setFeedPosts }) => {
       flexDirection: 'column',
       alignItems: 'center',
       justifyContent: 'center',
-      minHeight: '100vh'
+      minHeight: '100vh',
+      backgroundColor: 'white',
+      borderRadius: '1rem'
     }}>
       <Typography
         sx={{
           fontSize: '1.3rem',
           textAlign: 'center',
-          marginTop: '2rem',
+          marginTop: '6rem',
           '@media (max-width: 442px)': {
             fontSize: '1rem',
           },
@@ -83,7 +85,7 @@ const AddFeedPostForm = ({ user, feedPosts, setFeedPosts }) => {
           label="Minkälaista nettisivua etsit?"
           //placeholder="Course description"
           multiline
-          rows={8}
+          rows={15}
           value={description}
           onChange={({ target }) => setDescription(target.value)}
           sx={{ marginBottom: '1rem' }}

@@ -31,8 +31,8 @@ const FeedPostCard = ({ post }) => {
         <div>
           <Typography>{post.user.name}</Typography>
           {post.timeStamp ? (
-            <Typography>Published {post.timeStamp.split('T')[0]}</Typography>
-          ) : <Typography>Published over a year ago</Typography>}
+            <Typography>Julkaistu {post.timeStamp.split('T')[0]}</Typography>
+          ) : <Typography>Julkaistu yli vuosi sitten</Typography>}
         </div>
       </Box>
       <Typography style={{ whiteSpace: 'break-spaces' }}>{post.description}</Typography>

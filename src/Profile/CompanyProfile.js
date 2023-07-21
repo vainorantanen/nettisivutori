@@ -1,14 +1,12 @@
 import React from 'react'
-import { Container, Typography, Button } from '@mui/material'
-import { Link } from 'react-router-dom'
+import { Container, Typography } from '@mui/material'
 import CompanyProfileInfo from './CompanyProfileInfo'
 
-const CompanyProfile = ({ user }) => {
+const CompanyProfile = ({ user, setUser }) => {
   return (
-    <Container sx={{ marginTop: '7rem', minHeight: '100vh' }}>
+    <Container sx={{ marginTop: '7rem', minHeight: '100vh', backgroundColor: 'white', borderRadius: '1rem' }}>
       <Typography>Toimijan {user.name} Profiili</Typography>
-      <Typography>Muokkaa profiilin tietoja</Typography>
-      <CompanyProfileInfo user={user} />
+      <CompanyProfileInfo user={user} setUser={setUser}/>
       <Typography>Seuraa tekemiesi tarjousten tilannetta</Typography>
     </Container>
   )

@@ -27,8 +27,8 @@ const theme = createTheme({
 
 const StyledButton = styled(Button)({
   marginLeft: '1rem',
-  padding: '0.5rem 1rem',
-  borderRadius: '2rem',
+  padding: '0.1rem 1rem 0.1rem 1rem',
+  borderRadius: '1rem',
   border: 0,
   color: 'black',
   fontWeight: 'bold',
@@ -59,6 +59,9 @@ const Navbar = ({ user, logout }) => {
             </StyledButton>
             <StyledButton color="inherit" component={Link} to="/yritykset">
               Yritykset
+            </StyledButton>
+            <StyledButton color="inherit" component={Link} to="/yrityksille">
+              Yrityksille
             </StyledButton>
             <StyledButton color="inherit" component={Link} to="/tarjouskilpailut">
               Avoimet tarjouskilpailut
@@ -96,6 +99,9 @@ const Navbar = ({ user, logout }) => {
           <ListItemButton component={Link} to="/yritykset" onClick={toggleDrawer}>
             <ListItemText primary="Yritykset" />
           </ListItemButton>
+          <ListItemButton component={Link} to="/yrityksille" onClick={toggleDrawer}>
+            <ListItemText primary="Yrityksille" />
+          </ListItemButton>
           <ListItemButton component={Link} to="/tarjouskilpailut" onClick={toggleDrawer}>
             <ListItemText primary="Avoimet tarjouskilpailut" />
           </ListItemButton>
@@ -104,6 +110,9 @@ const Navbar = ({ user, logout }) => {
               <ListItemText primary="Lisää ilmoitus" />
             </ListItemButton>
           ) : null}
+          <ListItemButton component={Link} to="/profiili" onClick={toggleDrawer}>
+            <ListItemText primary="Profiili" />
+          </ListItemButton>
           {!user ? (
             <ListItemButton component={Link} to="/login" onClick={toggleDrawer}>
               <ListItemText primary="Kirjaudu" />

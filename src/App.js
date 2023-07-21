@@ -1,5 +1,6 @@
 import React from 'react'
 import { useState, useEffect, useRef } from 'react'
+import { useNavigate } from 'react-router-dom'
 
 import feedPostService from './services/feedposts'
 import loginService from './services/login'
@@ -29,6 +30,7 @@ import Feed from './components/Feed/Feed'
 import AddFeedPostForm from './components/Feed/AddFeedPostForm'
 import Profile from './Profile/Profile'
 import SingleFeedPost from './components/Feed/SingleFeedPost'
+import ForCompaniesMain from './components/ForCompanies/ForCompaniesMain'
 
 const theme = createTheme({
   typography: {
@@ -43,6 +45,8 @@ const App = () => {
   const [ feedPosts, setFeedPosts ] = useState([])
 
   const registerFormRef = useRef()
+  const navigate = useNavigate()
+
 
   useEffect(() => {
     feedPostService.getAll().then(posts =>
@@ -85,9 +89,9 @@ const App = () => {
   const logout = () => {
     setUser(null)
     storageService.removeUser()
-    console.log('user after logout', user)
     notifyWith('logged out')
     window.location.reload(false)
+    navigate('/', { replace: true })
   }
 
   const addUser = async (newUser) => {
@@ -111,8 +115,9 @@ const App = () => {
             addUser={addUser}/>} />
           <Route path='/tarjouskilpailut' element={<Feed feedPosts={feedPosts}/>} />
           <Route path='/lisaailmoitus' element={<AddFeedPostForm user={user} feedPosts={feedPosts} setFeedPosts={setFeedPosts}/>} />
-          <Route path='/profiili' element={<Profile user={user} />} />
+          <Route path='/profiili' element={<Profile user={user} setUser={setUser}/>} />
           <Route path='/tarjouskilpailut/:id' element={<SingleFeedPost feedPosts={feedPosts} user={user} />} />
+          <Route path='/yrityksille' element={ <ForCompaniesMain /> } />
         </Routes>
         <Footer />
       </Box>

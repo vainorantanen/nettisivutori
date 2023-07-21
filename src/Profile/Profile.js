@@ -3,7 +3,7 @@ import CompanyProfile from './CompanyProfile'
 import PrivateProfile from './PrivateProfile'
 import { Container } from '@mui/material'
 
-const Profile = ({ user }) => {
+const Profile = ({ user, setUser }) => {
 
   if (!user) {
     return null
@@ -12,14 +12,14 @@ const Profile = ({ user }) => {
   if (user.isCompany === true) {
     return (
       <Container>
-        <CompanyProfile user={user}/>
+        <CompanyProfile user={user} setUser={setUser}/>
       </Container>
     )
   }
 
   return (
     <Container>
-      <PrivateProfile user={user}/>
+      <PrivateProfile user={user} setUser={setUser}/>
     </Container>
   )
 }

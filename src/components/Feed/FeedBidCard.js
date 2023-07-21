@@ -13,8 +13,8 @@ const FeedBidCard = ({ bid }) => {
         </Box>
       )}
       <Typography>Hinta: {bid.price} euroa</Typography>
-      <Typography>Selite: {bid.description}</Typography>
       <Typography>Tarjous jätetty: {bid.timeStamp.split('T')[0]}</Typography>
+      <Typography>{bid.description}</Typography>
     </Box>
   )
 }

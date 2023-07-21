@@ -1,7 +1,6 @@
 import { Container, Typography, Box } from '@mui/material'
 import React from 'react'
 import { useParams } from 'react-router-dom'
-import { Link } from 'react-router-dom'
 
 const CompanyInfoPage = ({ users }) => {
   const id = useParams().id
