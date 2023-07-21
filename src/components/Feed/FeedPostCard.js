@@ -11,8 +11,8 @@ const FeedPostCard = ({ post }) => {
         padding: '2rem',
         border: '1px solid black',
         borderRadius: '1rem',
-        marginLeft: '8rem',
-        marginRight: '8rem',
+        marginLeft: '5rem',
+        marginRight: '5rem',
         display: 'flex',
         flexDirection: 'column',
         '@media (max-width: 820px)': {

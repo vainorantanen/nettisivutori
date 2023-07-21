@@ -76,7 +76,7 @@ const Navbar = ({ user, logout }) => {
                 Profiili
               </StyledButton>
             )}
-            <Typography className='logged-user' sx={{ marginTop: '0.5rem', marginLeft: '1rem', fontWeight: 'bold' }}>
+            <Typography className='logged-user' sx={{ marginLeft: '1rem', fontWeight: 'bold' }}>
               {user && (
                 <>{user.name} Kirjautuneena sisään</>
               )}
