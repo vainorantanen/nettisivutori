@@ -11,6 +11,8 @@ const SingleFeedPost = ({ feedPosts, user }) => {
   const [ post, setPost ] = useState(feedPosts.find((c) => c.id === id))
   const [ description, setDescription ] = useState('')
 
+  console.log('user singlepostis: ', user)
+
   useEffect(() => {
     if (post) {
       setDescription(post.description)

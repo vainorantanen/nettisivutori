@@ -12,6 +12,7 @@ const getAll = async () => {
 }
 
 const create = async (object) => {
+  console.log('täs header: ', headers)
   const request = await axios.post(baseUrl, object, { headers })
   return request.data
 }

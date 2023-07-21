@@ -74,16 +74,20 @@ const App = () => {
       const user = await loginService.login({ username, password })
       setUser(user)
       storageService.saveUser(user)
+      console.log('user login: ', user)
+      window.location.reload(false)
       notifyWith('welcome!')
     } catch(e) {
       notifyWith('wrong username or password', 'error')
     }
   }
 
-  const logout = async () => {
+  const logout = () => {
     setUser(null)
     storageService.removeUser()
+    console.log('user after logout', user)
     notifyWith('logged out')
+    window.location.reload(false)
   }
 
   const addUser = async (newUser) => {

@@ -13,6 +13,8 @@ import feedPostService from '../../services/feedposts'
 const AddFeedPostForm = ({ user, feedPosts, setFeedPosts }) => {
   const [description, setDescription] = useState('')
 
+  console.log('user addpostformis: ', user)
+
   const addFeedPost = async (newPost) => {
     const addedPost = await feedPostService.create(newPost)
     //notifyWith(`A new course '${newCourse.title}' by '${newCourse.company}' added`)

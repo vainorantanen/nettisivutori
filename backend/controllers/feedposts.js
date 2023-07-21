@@ -22,6 +22,9 @@ router.post('/', userExtractor, async (request, response) => {
   })
 
   const user = request.user
+
+  console.log('user feedpostisa: ', user)
+
   if (!user || user.isCompany === true) {
     return response.status(401).json({ error: 'operation not permitted' })
   }
@@ -39,9 +42,9 @@ router.post('/', userExtractor, async (request, response) => {
 })
 
 router.put('/:id', async (request, response) => {
-  const { likes, description } = request.body
+  const { description } = request.body
 
-  let updatedFeedPost = await FeedPost.findByIdAndUpdate(request.params.id,  { likes, description }, { new: true })
+  let updatedFeedPost = await FeedPost.findByIdAndUpdate(request.params.id,  { description }, { new: true })
 
   updatedFeedPost = await FeedPost.findById(updatedFeedPost._id).populate('user')
 
