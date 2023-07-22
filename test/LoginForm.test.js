@@ -15,8 +15,8 @@ test('renders login form', () => {
     </Router>
   )
 
-  const username = screen.getByLabelText('Username')
-  const password = screen.getByLabelText('Password')
+  const username = screen.getByLabelText('Käyttäjätunnus')
+  const password = screen.getByLabelText('Salasana')
 
   expect(username).toBeDefined()
   expect(password).toBeDefined()

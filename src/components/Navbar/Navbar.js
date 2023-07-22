@@ -50,7 +50,7 @@ const Navbar = ({ user, logout }) => {
     <ThemeProvider theme={theme}>
       <AppBar position="fixed">
         <Toolbar>
-          <IconButton color="inherit" onClick={toggleDrawer}>
+          <IconButton color="inherit" onClick={toggleDrawer} className='menuiconbutton'>
             <MenuIcon />
           </IconButton>
           <div className='nav-buttons'>
