@@ -6,20 +6,17 @@ const FeedBidCard = ({ bid }) => {
   //console.log('biddi: ', bid)
   return (
     <Box sx={{ backgroundColor: 'white', borderRadius: '1rem', padding: '1rem', marginBottom: '1rem' }}>
-      {bid.isApproved && (
+      {bid.isApproved ? (
         <Box>
-          <Typography>Hyväksytty</Typography>
+          <Typography>Hyväksytty ilmoittajan toimesta</Typography>
           <CheckCircleIcon />
         </Box>
+      ) : (
+        <Typography>Avoinna oleva tarjous</Typography>
       )}
       <Typography>Hinta: {bid.price} euroa</Typography>
       <Typography>Tarjous jätetty: {bid.timeStamp.split('T')[0]}</Typography>
       <Typography>{bid.description}</Typography>
-      {bid.isApproved ? (
-        <Typography>Hyväksytty ilmoittajan toimesta</Typography>
-      ) : (
-        <Typography>Avoinna oleva tarjous</Typography>
-      )}
     </Box>
   )
 }

@@ -45,9 +45,9 @@ router.post('/', userExtractor, async (request, response) => {
 })
 
 router.put('/:id', async (request, response) => {
-  const { description } = request.body
+  const { description, isOpen } = request.body
 
-  let updatedFeedPost = await FeedPost.findByIdAndUpdate(request.params.id,  { description }, { new: true })
+  let updatedFeedPost = await FeedPost.findByIdAndUpdate(request.params.id,  { description, isOpen }, { new: true })
 
   updatedFeedPost = await FeedPost.findById(updatedFeedPost._id).populate('user')
 

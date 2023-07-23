@@ -105,14 +105,16 @@ const Navbar = ({ user, logout }) => {
           <ListItemButton component={Link} to="/tarjouskilpailut" onClick={toggleDrawer}>
             <ListItemText primary="Avoimet tarjouskilpailut" />
           </ListItemButton>
-          {user && user.isCompany === true ? (
+          {user && user.isCompany === false ? (
             <ListItemButton component={Link} to="/lisaailmoitus" onClick={toggleDrawer}>
               <ListItemText primary="Lisää ilmoitus" />
             </ListItemButton>
           ) : null}
-          <ListItemButton component={Link} to="/profiili" onClick={toggleDrawer}>
-            <ListItemText primary="Profiili" />
-          </ListItemButton>
+          {user && (
+            <ListItemButton component={Link} to="/profiili" onClick={toggleDrawer}>
+              <ListItemText primary="Profiili" />
+            </ListItemButton>
+          )}
           {!user ? (
             <ListItemButton component={Link} to="/login" onClick={toggleDrawer}>
               <ListItemText primary="Kirjaudu" />

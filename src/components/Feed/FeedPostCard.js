@@ -29,6 +29,11 @@ const FeedPostCard = ({ post }) => {
         }}
       >
         <div>
+          {post.isOpen ? (
+            <Typography>Avoinna oleva ilmoitus</Typography>
+          ) : (
+            <Typography>Ilmoitus suljettu</Typography>
+          )}
           <Typography>{post.user.name}</Typography>
           {post.timeStamp ? (
             <Typography>Julkaistu {post.timeStamp.split('T')[0]}</Typography>

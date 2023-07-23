@@ -23,7 +23,7 @@ const HomeHeader = () => {
             fontSize: '1rem',
           },
         }}
-      >Helpoin tapa kilpailuttaa omien nettisivujen teko. Täysin ilmaiseksi.</Typography>
+      >Helpoin tapa löytää nettisivujesi tekijä. Täysin ilmaiseksi.</Typography>
       <Typography
         sx={{
           fontSize: '1.5rem',
