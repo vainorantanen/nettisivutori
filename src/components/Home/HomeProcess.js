@@ -9,6 +9,7 @@ const HomeProcess = () => {
       display: 'flex',
       flexDirection: 'column',
       flexWrap: 'wrap',
+      gap: '6rem'
     }}>
       <Box sx={{
         display: 'flex',
@@ -16,18 +17,22 @@ const HomeProcess = () => {
         flexWrap: 'wrap',
         justifyContent: 'center',
         alignItems: 'center',
-        textAlign: 'center'
+        textAlign: 'flex-start',
+        gap: '1rem'
       }}>
         <Box sx={{
           display: 'flex',
           flexDirection: 'column',
           flexWrap: 'wrap',
           width: '40vw',
+          backgroundColor: 'white',
+          borderRadius: '1rem',
+          padding: '1rem',
           '@media (max-width: 600px)': {
             width: '80vw',
           }
         }}>
-          <Typography>1. Määrittele tarpeesi</Typography>
+          <Typography sx={{ marginBottom: '1.5rem', fontSize: '1.5rem' }}>1. <span style={{ color: 'blue' }}>Määrittele</span>  tarpeesi</Typography>
           <Typography>Kerro millaiset nettisivut haluat ja mitä ominiasuuksia nettisivujen tulisi sisältää. Määrittely antaa raamit nettisivuejesi toeuttajalle niiden lajudesta sekä mahdollistaa arvion työmäärästä ja hinnasta</Typography>
         </Box>
         <Box>
@@ -42,7 +47,8 @@ const HomeProcess = () => {
         flexWrap: 'wrap',
         justifyContent: 'center',
         alignItems: 'center',
-        textAlign: 'center'
+        textAlign: 'flex-start',
+        gap: '1rem'
       }}>
         <Box>
           <img src={laptopPic} alt='pic of mobile app' style={{ maxWidth: '40vw', height: 'auto' }}/>
@@ -50,15 +56,16 @@ const HomeProcess = () => {
         <Box sx={{
           display: 'flex',
           flexDirection: 'column',
-          flexWrap: 'wrap',
-          justifyContent: 'flex-start',
           width: '40vw',
+          backgroundColor: 'white',
+          borderRadius: '1rem',
+          padding: '1rem',
           '@media (max-width: 600px)': {
             width: '80vw',
           }
         }}>
-          <Typography>2. Kilpailuta toteutus</Typography>
-          <Typography>Kilpailuttamalla nettisivujesi toteutuksen, tavoitat markkinoiden parhaat tekijät ja parhaat ideat.</Typography>
+          <Typography sx={{ marginBottom: '1.5rem', fontSize: '1.5rem' }}>2. <span style={{ color: 'blue' }}>Lisää</span> ilmoitus</Typography>
+          <Typography>Lisäämällä ilmoituksen tarpeidesi mukaan, tavoitat markkinoiden parhaat tekijät ja parhaat ideat.</Typography>
         </Box>
 
 
@@ -70,18 +77,22 @@ const HomeProcess = () => {
         flexWrap: 'wrap',
         justifyContent: 'center',
         alignItems: 'center',
-        textAlign: 'center'
+        textAlign: 'flex-start',
+        gap: '1rem',
       }}>
         <Box sx={{
           display: 'flex',
           flexDirection: 'column',
           flexWrap: 'wrap',
           width: '40vw',
+          backgroundColor: 'white',
+          borderRadius: '1rem',
+          padding: '1rem',
           '@media (max-width: 600px)': {
             width: '80vw',
           }
         }}>
-          <Typography>3. Valitse paras tekijä</Typography>
+          <Typography sx={{ marginBottom: '1.5rem', fontSize: '1.5rem' }}>3. <span style={{ color: 'blue' }}>Valitse</span> paras tekijä</Typography>
           <Typography>Kun tarjouskilpailu on päättynyt voi valita tarjouksista itsellesi parhaiten sopivan tekijän, ja siten varmistat etttä saat juuri itsellesi parhaat mahdolliset sivut.</Typography>
         </Box>
         <Box>
