@@ -86,28 +86,10 @@ const HomeHeader = () => {
             </Box>
             <Button
               component={Link}
-              to="/tarjouskilpailut"
-              sx={{
-                backgroundColor: 'blue',
-                color: 'white',
-                transition: 'transform 0.3s',
-                marginTop: '1rem',
-                marginBottom: '1rem',
-                marginLeft: '1rem',
-                borderRadius: '1rem',
-                '&:hover': {
-                  transform: 'scale(1.05)',
-                  backgroundImage: 'linear-gradient(to bottom, #003eff, #006eff)',
-                },
-              }}
-            >
-  Avoimet tarjouskilpailut
-            </Button>
-            <Button
-              component={Link}
               to="/lisaailmoitus"
               sx={{ backgroundColor: 'blue', color: 'white',
                 transition: 'transform 0.3s',
+                maxWidth: '9rem',
                 marginTop: '1rem',
                 marginLeft: '1rem',
                 marginBottom: '1rem',
@@ -116,7 +98,27 @@ const HomeHeader = () => {
                   transform: 'scale(1.05)',
                   backgroundImage: 'linear-gradient(to bottom, #003eff, #006eff)' }
               }}>
-            Aloita tarjouskilpailu
+            Aloita tästä
+            </Button>
+            <Button
+              component={Link}
+              to="/tarjouskilpailut"
+              sx={{
+                backgroundColor: 'blue',
+                color: 'white',
+                transition: 'transform 0.3s',
+                marginTop: '1rem',
+                marginBottom: '1rem',
+                maxWidth: '9rem',
+                marginLeft: '1rem',
+                borderRadius: '1rem',
+                '&:hover': {
+                  transform: 'scale(1.05)',
+                  backgroundImage: 'linear-gradient(to bottom, #003eff, #006eff)',
+                },
+              }}
+            >
+  Avoimet ilmoitukset
             </Button>
           </Box>
         </Box>
