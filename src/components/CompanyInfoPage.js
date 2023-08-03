@@ -9,6 +9,7 @@ const CompanyInfoPage = ({ users }) => {
   if (!company) {
     return null
   }
+
   return (
     <Container
       sx={{
@@ -18,9 +19,14 @@ const CompanyInfoPage = ({ users }) => {
         alignItems: 'center',
         marginTop: '1rem',
         minHeight: '100vh',
+        backgroundColor: '#fff', // White background
+        padding: '2rem',
+        boxShadow: '0.3rem 0.3rem 0.5rem rgba(0, 0, 0, 0.2)',
+        borderRadius: '1rem',
       }}
     >
       <Typography
+        variant="h2"
         sx={{
           fontSize: '2.5rem',
           textAlign: 'center',
@@ -31,18 +37,27 @@ const CompanyInfoPage = ({ users }) => {
       >
         {company.name}
       </Typography>
-      <Box sx={{ marginTop: '1rem', marginBottom: '1rem' }}>
-        <img
-          src={`${company.imageurl}`}
-          alt="company logo"
-          style={{ border: '1px solid black', borderRadius: '1rem', margin: '1rem',
-            width: '20rem', height: 'auto' }}
-        ></img>
-      </Box>
       <Box>
-        <Typography sx={{ marginBottom: '2rem' }}>Tietoa yrityksestä</Typography>
-        <Typography>{company.description}</Typography>
+        <Typography variant="h5" sx={{ marginBottom: '2rem', fontWeight: 'bold' }}>
+          Tietoa yrityksestä
+        </Typography>
+        <Typography style={{ whiteSpace: 'break-spaces' }}>{company.description}</Typography>
       </Box>
+      <Box sx={{ marginTop: '2rem' }}>
+        <Typography variant="h5" sx={{ marginBottom: '1rem', fontWeight: 'bold' }}>
+          Yhteystiedot
+        </Typography>
+        <Typography>
+          Sähköposti: {company.email || 'Ei saatavilla'}
+          <br />
+          Puhelin: {company.phone || 'Ei saatavilla'}
+          <br />
+          Osoite: {company.address || 'Ei saatavilla'}
+          <br />
+          Kotisivut: {company.url || 'Ei saatavilla'}
+        </Typography>
+      </Box>
+      {/* Add more information as needed */}
     </Container>
   )
 }
