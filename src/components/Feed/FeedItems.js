@@ -1,10 +1,11 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import {
   Box,
   Typography,
   FormControl,
   Select,
   MenuItem,
+  Button,
 } from '@mui/material'
 import FeedPostCard from './FeedPostCard'
 
@@ -12,6 +13,8 @@ const FeedItems = ({ feedPosts }) => {
   const [filter1, setFilter1] = useState('All')
   const [filter2, setFilter2] = useState('All')
   const [filter3, setFilter3] = useState('All')
+  const [currentPage, setCurrentPage] = useState(1)
+  const postsPerPage = 5
 
   const filteredPosts = feedPosts
     .filter((post) => {
@@ -28,6 +31,16 @@ const FeedItems = ({ feedPosts }) => {
       return false
     })
     .sort((a, b) => new Date(b.timeStamp) - new Date(a.timeStamp))
+
+  const indexOfLastPost = currentPage * postsPerPage
+  const indexOfFirstPost = indexOfLastPost - postsPerPage
+  const currentPosts = filteredPosts.slice(indexOfFirstPost, indexOfLastPost)
+
+  const paginate = (pageNumber) => setCurrentPage(pageNumber)
+
+  useEffect(() => {
+    setCurrentPage(1)
+  }, [filter1, filter2, filter3])
 
   return (
     <Box sx={{ marginTop: '4rem' }}>
@@ -104,9 +117,25 @@ const FeedItems = ({ feedPosts }) => {
               borderRadius: '1rem',
             }}
           >
-            {/* Rendering the filtered posts */}
-            {filteredPosts.map((post) => (
+            {/* Rendering the current page of filtered posts */}
+            {currentPosts.map((post) => (
               <FeedPostCard key={post.id} post={post} />
+            ))}
+          </Box>
+          {/* Pagination */}
+          <Box className="pagination" sx={{ textAlign: 'center', marginBottom: '1rem' }}>
+            {Array.from({ length: Math.ceil(filteredPosts.length / postsPerPage) }).map((_, index) => (
+              <Button
+                sx={{
+                  backgroundColor: currentPage === index + 1 ? 'blue' : 'transparent',
+                  color: currentPage === index + 1 ? 'white' : 'inherit',
+                  ':hover': {
+                    backgroundColor: currentPage === index + 1 ? 'blue' : 'lightblue',
+                  },
+                }}
+                key={index} onClick={() => paginate(index + 1)}>
+                {index + 1}
+              </Button>
             ))}
           </Box>
         </Box>
