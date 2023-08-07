@@ -5,6 +5,7 @@ import { useNavigate } from 'react-router-dom'
 import feedPostService from './services/feedposts'
 import loginService from './services/login'
 import usersService from './services/users'
+import kayttajaService from './services/user'
 
 import Notification from './components/Notification'
 import storageService from './services/storage'
@@ -39,7 +40,7 @@ const theme = createTheme({
 })
 
 const App = () => {
-  const [user, setUser] = useState('')
+  const [user, setUser] = useState(null)
   const [info, setInfo] = useState({ message: null })
   const [users, setUsers] = useState([])
   const [ feedPosts, setFeedPosts ] = useState([])
@@ -78,20 +79,19 @@ const App = () => {
       const user = await loginService.login({ username, password })
       setUser(user)
       storageService.saveUser(user)
-      console.log('user login: ', user)
-      window.location.reload(false)
-      notifyWith('welcome!')
+      kayttajaService.setUser(user)
+      notifyWith(`Tervetuloa ${user.name}`)
+      navigate('/')
     } catch(e) {
-      notifyWith('wrong username or password', 'error')
+      notifyWith('Väärä käyttäjätunnus tai salasana', 'error')
     }
   }
 
   const logout = () => {
     setUser(null)
     storageService.removeUser()
-    notifyWith('logged out')
-    window.location.reload(false)
-    navigate('/', { replace: true })
+    kayttajaService.clearUser()
+    notifyWith('Kirjauduttu ulos')
   }
 
   const addUser = async (newUser) => {
