@@ -2,6 +2,12 @@ import { Box, Typography, Button } from '@mui/material'
 import React from 'react'
 import { Link } from 'react-router-dom'
 import mobileAppPic from '../../Assets/mobileapp.png'
+import Timeline from '@mui/lab/Timeline'
+import TimelineItem, { timelineItemClasses } from '@mui/lab/TimelineItem'
+import TimelineSeparator from '@mui/lab/TimelineSeparator'
+import TimelineConnector from '@mui/lab/TimelineConnector'
+import TimelineContent from '@mui/lab/TimelineContent'
+import TimelineDot from '@mui/lab/TimelineDot'
 
 const HomeHeader = () => {
   return (
@@ -12,6 +18,7 @@ const HomeHeader = () => {
           textAlign: 'center',
           '@media (max-width: 442px)': {
             fontSize: '1.5rem',
+            marginBottom: '2rem'
           },
         }}
       >Tervetuoloa Nettisivutoriin!</Typography>
@@ -41,23 +48,58 @@ const HomeHeader = () => {
                 fontSize: '1rem',
               },
             }}
-          >Helpoin tapa löytää nettisivujesi tekijä. Täysin ilmaiseksi.</Typography>
-          <Typography
-            sx={{
-              fontSize: '1.5rem',
-              textAlign: 'center',
-              '@media (max-width: 442px)': {
-                fontSize: '1rem',
-              },
-            }}
-          >Lupaamme sinulle tarjouksen 24 tunnin sisällä ilmoituksen jättämisestä!</Typography>
+          ><span style={{ color: 'blue' }}>Paras</span> tapa toteuttaa omat nettisivut ja Web-projektit.</Typography>
           <Box
             sx={{
               display: 'flex',
               flexDirection: 'column',
-              flexWrap: 'wrap',
             }}
           >
+            <Box>
+              <Timeline sx={{
+                [`& .${timelineItemClasses.root}:before`]: {
+                  flex: 0,
+                  padding: 0,
+                },
+              }}>
+                <TimelineItem>
+                  <TimelineSeparator>
+                    <TimelineDot color="primary" />
+                    <TimelineConnector sx={{ bgcolor: 'primary.main' }}/>
+                  </TimelineSeparator>
+                  <TimelineContent>1. Määrittele tarpeesi</TimelineContent>
+                </TimelineItem>
+                <TimelineItem>
+                  <TimelineSeparator>
+                    <TimelineDot color="primary" />
+                    <TimelineConnector sx={{ bgcolor: 'primary.main' }}/>
+                  </TimelineSeparator>
+                  <TimelineContent>2. Lisää ilmoitus</TimelineContent>
+                </TimelineItem>
+                <TimelineItem>
+                  <TimelineSeparator>
+                    <TimelineDot color="primary" />
+                  </TimelineSeparator>
+                  <TimelineContent>3. Valitse paras tekijä</TimelineContent>
+                </TimelineItem>
+              </Timeline>
+            </Box>
+            <Button
+              component={Link}
+              to="/lisaailmoitus"
+              sx={{ backgroundColor: 'blue', color: 'white',
+                transition: 'transform 0.3s',
+                maxWidth: '9rem',
+                marginTop: '1rem',
+                marginLeft: '1rem',
+                marginBottom: '1rem',
+                borderRadius: '1rem',
+                '&:hover': {
+                  transform: 'scale(1.05)',
+                  backgroundImage: 'linear-gradient(to bottom, #003eff, #006eff)' }
+              }}>
+            Aloita tästä
+            </Button>
             <Button
               component={Link}
               to="/tarjouskilpailut"
@@ -67,6 +109,7 @@ const HomeHeader = () => {
                 transition: 'transform 0.3s',
                 marginTop: '1rem',
                 marginBottom: '1rem',
+                maxWidth: '9rem',
                 marginLeft: '1rem',
                 borderRadius: '1rem',
                 '&:hover': {
@@ -75,22 +118,7 @@ const HomeHeader = () => {
                 },
               }}
             >
-  Avoimet tarjouskilpailut
-            </Button>
-            <Button
-              component={Link}
-              to="/lisaailmoitus"
-              sx={{ backgroundColor: 'blue', color: 'white',
-                transition: 'transform 0.3s',
-                marginTop: '1rem',
-                marginLeft: '1rem',
-                marginBottom: '1rem',
-                borderRadius: '1rem',
-                '&:hover': {
-                  transform: 'scale(1.05)',
-                  backgroundImage: 'linear-gradient(to bottom, #003eff, #006eff)' }
-              }}>
-            Aloita tarjouskilpailu
+  Avoimet ilmoitukset
             </Button>
           </Box>
         </Box>

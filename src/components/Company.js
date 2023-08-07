@@ -5,39 +5,49 @@ import { Typography, Box } from '@mui/material'
 const Company = ({ company }) => {
   return (
     <Box
+      component={Link}
+      to={`/yritykset/${company.id}`}
       sx={{
         display: 'flex',
         flexDirection: 'column',
-        justifyContent: 'center',
-        backgroundColor: 'white',
-        textAlign: 'center',
-        '&:hover': {
-          transform: 'scale(1.05)' },
+        justifyContent: 'flex-start', // Start the content from the top (left-aligned)
+        backgroundColor: '#f0f0f0',
+        textAlign: 'flex-start',
+        textDecoration: 'none',
         padding: '2rem',
-        boxShadow: '0.3rem 0.3rem 0.3rem',
-        maxWidth: '12rem',
+        boxShadow: '0.3rem 0.3rem 0.3rem rgba(0, 0, 0, 0.2)',
+        width: '70vw',
         borderRadius: '1rem',
         marginBottom: '1rem',
-        marginLeft: 'auto',
-        marginRight: 'auto',
+        transition: '0.4s',
+        '&:hover': {
+          transform: 'scale(1.05)',
+          boxShadow: '0.3rem 0.3rem 0.5rem rgba(0, 0, 0, 0.3)',
+        },
       }}
     >
-      <img
-        src={`${company.imageurl}`}
-        alt='Company logo'
-        style={{
-          border: '1px solid black',
-          borderRadius: '1rem',
-          width: '8rem',
-          height: 'auto',
-          marginLeft: 'auto',
-          marginRight: 'auto',
+      <Typography
+        variant="h4"
+        sx={{
+          color: '#2c3e50',
+          textDecoration: 'none',
+          marginBottom: '0.5rem',
+          '&:hover': {
+            textDecoration: 'underline',
+          },
         }}
-      />
-      <Box>
-        <Typography component={Link} to={`/yritykset/${company.id}`}>{company.name}
-        </Typography>
-      </Box>
+      >
+        {company.name}
+      </Typography>
+      <Typography sx={{
+        color: '#666',
+        overflow: 'hidden',
+        textOverflow: 'ellipsis',
+        display: '-webkit-box',
+        WebkitLineClamp: 2, // Show only one line of description
+        WebkitBoxOrient: 'vertical',
+        lineHeight: '1.4', // Increase line height for better readability
+      }}>{company.description}</Typography>
     </Box>
   )
 }
